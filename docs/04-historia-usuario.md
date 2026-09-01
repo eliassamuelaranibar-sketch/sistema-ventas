@@ -43,3 +43,5 @@
 3. HU-03 (RF-03 - Debe tener)
 4. HU-04 (RF-04 - Debe tener)
 5. HU-05 (RF-05 - Debería tener)
+¿hay alguna historia que hayas escrito que no se relacione con
+ningún RF de la Guía 3? Si es así, ¿significa que falta un requerimiento, o que la historia no es necesaria?
