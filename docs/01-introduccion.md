@@ -6,5 +6,5 @@
 [ ¿Cómo maneja hoy sus ventas? (a mano, en Excel, sin control, etc.) ]
 ## Problema
 [ ¿Qué problema concreto le causa trabajar así? ]
-## Lo que necesita
+## Lo que necesitacs
 [ ¿Qué le gustaría que un sistema hiciera por él? ]

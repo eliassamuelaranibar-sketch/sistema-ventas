@@ -14,3 +14,5 @@
 
 ### Mi caso propio 
 [usuarios] tienen el problema de [problemas], lo cual [impacto]. Una solucion exitosa deberia [criterio de exito].
+
+##actores.
