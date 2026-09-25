@@ -11,29 +11,39 @@
 - nombre: texto
 - precio: número decimal
 - existencia: número entero
+### productos
+- id: identificador (clave primaria)
+- nombre: texto
+- precio: número decimal
+- existencia: número entero
+
 ### clientes
 - id: identificador (clave primaria)
 - nombre: texto
-- contacto: texto (opcional)
+- email: texto
+- telefono: texto
+- direccion: texto
+
 ### usuarios
 - id: identificador (clave primaria)
 - nombre: texto
-- rol: texto (vendedor / administrador)
+- email: texto
+- password: texto
+- rol: texto
+
 ### ventas
 - id: identificador (clave primaria)
-- fecha: fecha / hora
-- id_usuario: clave foránea -> usuarios
-- id_cliente: clave foránea -> clientes (opcional)
+- id_usuario: identificador (clave foránea a usuarios)
+- id_cliente: identificador (clave foránea a clientes)
+- fecha: fecha
+- metodo_pago: texto
 - total: número decimal
+- estado: texto
+
 ### detalle_venta
 - id: identificador (clave primaria)
-- id_venta: clave foránea -> ventas
-- id_producto: clave foránea -> productos
+- id_venta: identificador (clave foránea a ventas)
+- id_producto: identificador (clave foránea a productos)
 - cantidad: número entero
 - precio_unitario: número decimal
-## Relaciones
-- ventas.id_usuario -> usuarios.id (un usuario tiene muchas ventas)
-- ventas.id_cliente -> clientes.id (un cliente tiene muchas ventas, opcional)
-- detalle_venta.id_venta -> ventas.id (una venta tiene muchas líneas de detalle)
-- detalle_venta.id_producto -> productos.id (un producto aparece en muchas líneas de
-detalle)
+- subtotal: número decimal
