@@ -96,13 +96,13 @@
 //         return null;
 //     }
 // });
-const productos = [
-{ nombre: "Martillo", precio: 45, existencia: 12 },
-{ nombre: "Taladro", precio: 350, existencia: 5 },
-{ nombre: "Clavos", precio: 15, existencia: 40 },
-];
-//  const preciosmayorcien = productos.filter((p) => p.precio > 100);
-//  console.log(preciosmayorcien);
+// const productos = [
+// { nombre: "Martillo", precio: 45, existencia: 12 },
+// { nombre: "Taladro", precio: 350, existencia: 5 },
+// { nombre: "Clavos", precio: 15, existencia: 40 },
+// ];
+// //  const preciosmayorcien = productos.filter((p) => p.precio > 100);
+// //  console.log(preciosmayorcien);
 
 //  const tohermenoresciemn
 // const taladro = productos.find((p)=> p.nombre === "taladro");
@@ -110,6 +110,6 @@ const productos = [
 // const totalInventario = productos.reduce((suma, p) => suma + p.precio, 0);
 // console.log(totalInventario);
 
-const totalInventario = productos.reduce((total, p) => total + p.precio * p.existencia, 0,);
-console.log(totalInventario);
+// const totalInventario = productos.reduce((total, p) => total + p.precio * p.existencia, 0,);
+// console.log(totalInventario);
 
