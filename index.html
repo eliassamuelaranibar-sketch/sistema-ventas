@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Multiverse del Hogar y Patitas</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -20,9 +21,9 @@
 
   <main>
     <section id="inicio" class="hero">
-      <h1>Mascotas, hogar, ropa y mucho más</h1>
+      <h1>Mascotas, hogar, ropa, electrodomésticos y mucho más</h1>
       <p>Elige lo que te gusta y envía tu pedido por WhatsApp. Tu consulta no molesta.</p>
-      <p class="entrega">📦 Entregas: viernes de 17:00 a 18:00</p>
+      <p class="entrega">📦 Entregas: viernes de 17:00 a 18:00 en el correo frente al market B</p>
       <a href="#catalogo" class="btn btn-sol">Ver catálogo</a>
     </section>
 
@@ -43,14 +44,14 @@
         </div>
         <div class="tarjeta-contacto">
           <h3>📍 Tienda física</h3>
-          <p>Av. Simón López N.º 161, Cochabamba</p>
+          <p>Av. Simón López y David crespo N.º 161, Cochabamba</p>
           <p><a href="https://maps.google.com/maps/search/Av.%20Sim%C3%B3n%20L%C3%B3pez%20161%2C%20Cochabamba%2C%20Bolivia/@-17.361800662941032,-66.18181463330984,17z?hl=es" target="_blank" rel="noopener">Ver en el mapa</a></p>
         </div>
         <div class="tarjeta-contacto">
           <h3>🕒 Horarios</h3>
-          <p>Lunes a jueves: 09:00 a 19:00</p>
-          <p>Viernes y sábado: 09:00 a 13:30</p>
-          <p>Entregas: viernes 17:00 a 18:00</p>
+          <p>tienda abierto: de Lunes a jueves de 09:00 a 19:00</p>
+          <p>Viernes y sábado de 09:00 a 13:30</p>
+          <p>Entregas en el correo: viernes de 17:00 a 18:00</p>
         </div>
         <div class="tarjeta-contacto">
           <h3>👥 Comunidad</h3>
@@ -72,17 +73,17 @@
     <div id="carrito-items" class="carrito-items"></div>
     <div class="carrito-pie">
       <p class="total">Total: <strong id="total">Bs 0</strong></p>
-      
-      <!-- NUEVO: Formulario seguro de datos para tu tabla 'cliente' -->
-      <div class="formulario-cliente" style="margin-bottom: 15px; display: flex; flex-direction: column; gap: 8px;">
-        <label style="font-size: 0.85rem; font-weight: 600;">Tu Nombre:
-          <input type="text" id="cliente-nombre" placeholder="Ej. Juan Pérez" required style="width: 100%; padding: 6px; border: 1.5px solid var(--borde); border-radius: 6px; font-family: inherit;">
+
+      <!-- Datos del cliente (se guardan en la tabla 'cliente') -->
+      <div class="formulario-cliente">
+        <label>Tu nombre:
+          <input type="text" id="cliente-nombre" placeholder="Ej. Juan Pérez" autocomplete="name" required>
         </label>
-        <label style="font-size: 0.85rem; font-weight: 600;">Teléfono / Celular:
-          <input type="number" id="cliente-telefono" placeholder="Ej. 75934423" required style="width: 100%; padding: 6px; border: 1.5px solid var(--borde); border-radius: 6px; font-family: inherit;">
+        <label>Teléfono / celular:
+          <input type="tel" id="cliente-telefono" placeholder="Ej. 75934423" inputmode="numeric" autocomplete="tel" required>
         </label>
-        <label style="font-size: 0.85rem; font-weight: 600;">Dirección de entrega:
-          <input type="text" id="cliente-direccion" placeholder="Ej. Av. América 450" required style="width: 100%; padding: 6px; border: 1.5px solid var(--borde); border-radius: 6px; font-family: inherit;">
+        <label>Dirección de entrega:
+          <input type="text" id="cliente-direccion" placeholder="Ej. Av. América 450" autocomplete="street-address" required>
         </label>
       </div>
 

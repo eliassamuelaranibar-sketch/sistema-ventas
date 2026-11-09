@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ventas - Multiverse del Hogar y Patitas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <header class="barra">
+    <a href="../index.html" class="logo">🐾 Multiverse del Hogar y Patitas</a>
+    <button id="btn-salir" class="btn-carrito" hidden>Cerrar sesión</button>
+  </header>
+
+  <main class="seccion">
+    <section id="vista-login" hidden>
+      <h2>Acceso de trabajadores</h2>
+      <form id="form-login" class="formulario-cliente" style="max-width: 380px;">
+        <label>Correo:
+          <input type="email" id="login-email" autocomplete="username" required>
+        </label>
+        <label>Contraseña:
+          <input type="password" id="login-password" autocomplete="current-password" required>
+        </label>
+        <p id="mensaje-login" class="agotado"></p>
+        <button type="submit" class="btn btn-ancho">Entrar</button>
+      </form>
+    </section>
+
+    <section id="vista-ventas" hidden>
+      <h2>Ventas</h2>
+      <p id="estado-ventas" class="estado"></p>
+      <div id="lista-ventas" class="contactos"></div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/supabase-client.js"></script>
+  <script src="../js/ventas.js"></script>
+</body>
+</html>
