@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Trabajadores - Multiverse del Hogar y Patitas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+  <header class="barra">
+    <a href="../index.html" class="logo">🐾 Multiverse del Hogar y Patitas</a>
+    <button id="btn-salir" class="btn-carrito" hidden>Cerrar sesión</button>
+  </header>
+
+  <main class="seccion">
+    <!-- LOGIN -->
+    <section id="vista-login" hidden>
+      <h2>Acceso de trabajadores</h2>
+      <form id="form-login" class="formulario-cliente" style="max-width: 380px;">
+        <label>Correo:
+          <input type="email" id="login-email" autocomplete="username" required>
+        </label>
+        <label>Contraseña:
+          <input type="password" id="login-password" autocomplete="current-password" required>
+        </label>
+        <p id="mensaje-login" class="agotado"></p>
+        <button type="submit" class="btn btn-ancho">Entrar</button>
+      </form>
+    </section>
+
+    <!-- PANEL (solo con sesión) -->
+    <section id="vista-panel" hidden>
+      <div class="filtros">
+        <button class="filtro activo" data-pestana="ventas">Ventas</button>
+        <button class="filtro" data-pestana="productos">Productos</button>
+      </div>
+
+      <!-- PESTAÑA VENTAS -->
+      <div id="panel-ventas">
+        <h2>Ventas</h2>
+        <p id="estado-ventas" class="estado"></p>
+        <div id="lista-ventas" class="contactos"></div>
+      </div>
+
+      <!-- PESTAÑA PRODUCTOS -->
+      <div id="panel-productos" hidden>
+        <h2>Nuevo producto</h2>
+        <form id="form-nuevo" class="formulario-cliente" style="max-width: 420px; margin-bottom: 40px;">
+          <label>Nombre:
+            <input type="text" id="nuevo-nombre" required>
+          </label>
+          <label>Categoría:
+            <select id="nuevo-categoria" required style="width:100%; padding:8px; margin-top:2px; border:2px solid var(--borde); border-radius:8px; font-family:inherit; font-size:1rem; background:#fff;">
+              <option value="">Elige una categoría</option>
+              <option value="Pura Patita">Pura Patita</option>
+              <option value="Ropa y Accesorios Mujer">Ropa y Accesorios Mujer</option>
+              <option value="Ropa Deportiva H y M">Ropa Deportiva H y M</option>
+              <option value="Hogar y Jardín">Hogar y Jardín</option>
+              <option value="Electrodomésticos">Electrodomésticos</option>
+              <option value="Frazadas y Pijamas H y M">Frazadas y Pijamas H y M</option>
+              <option value="Fruta Fresca y Jugosa">Fruta Fresca y Jugosa</option>
+            </select>
+          </label>
+          <label>Precio de venta (Bs):
+            <input type="number" id="nuevo-venta" min="0" step="0.01" required>
+          </label>
+          <label>Precio de costo (Bs):
+            <input type="number" id="nuevo-costo" min="0" step="0.01" required>
+          </label>
+          <label>Stock (unidades):
+            <input type="number" id="nuevo-stock" min="0" step="1" required>
+          </label>
+          <label>Descripción (opcional):
+            <textarea id="nuevo-descripcion" rows="3" style="width:100%; padding:8px; margin-top:2px; border:2px solid var(--borde); border-radius:8px; font-family:inherit; font-size:1rem;"></textarea>
+          </label>
+          <label>Foto (opcional, JPG, PNG o WebP, máximo 5 MB):
+            <input type="file" id="nuevo-foto" accept="image/jpeg,image/png,image/webp">
+          </label>
+          <p id="mensaje-nuevo"></p>
+          <button type="submit" id="btn-nuevo" class="btn btn-ancho">Agregar producto</button>
+        </form>
+
+        <h2>Productos</h2>
+        <p id="estado-productos" class="estado"></p>
+        <div id="lista-productos" class="contactos"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../js/supabase-client.js"></script>
+  <script src="../js/trabajador.js"></script>
+</body>
+</html>
