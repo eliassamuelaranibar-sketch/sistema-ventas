@@ -92,3 +92,12 @@ a { color: inherit; }
 
 @media (max-width: 560px) { .enlaces { display: none; } .logo { font-size: 1.05rem; } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+
+/* NUEVO: ventana del QR de pago */
+.modal-qr { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 40;
+  display: flex; align-items: center; justify-content: center; padding: 16px; }
+.modal-qr[hidden] { display: none; }
+.modal-caja { background: var(--blanco); border-radius: 16px; padding: 24px; width: min(380px, 100%);
+  max-height: 95vh; overflow-y: auto; text-align: center; }
+.modal-caja h2 { color: var(--morado); margin-bottom: 8px; }
+.qr-img { width: 100%; max-width: 260px; margin: 14px auto; display: block; }

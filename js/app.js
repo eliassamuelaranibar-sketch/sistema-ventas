@@ -170,6 +170,15 @@ function abrirWhatsApp(mensaje) {
   window.location.href = url;
 }
 
+// ===== NUEVO: VENTANA DEL QR =====
+let mensajePendiente = "";
+
+function mostrarQR(total, mensaje) {
+  mensajePendiente = mensaje;
+  document.querySelector("#qr-total").textContent = "Bs " + total;
+  document.querySelector("#modal-qr").hidden = false;
+}
+
 // ===== ENVÍO PROTEGIDO MEDIANTE LA FUNCIÓN RPC DE SUPABASE =====
 async function enviarWhatsApp() {
   if (carrito.length === 0) return;
@@ -228,7 +237,7 @@ async function enviarWhatsApp() {
     btn.disabled = false;
     btn.textContent = "Enviar pedido por WhatsApp";
 
-    abrirWhatsApp(mensaje);
+    mostrarQR(totalEstimado, mensaje); // NUEVO: antes aquí se abría WhatsApp directo
 
   } catch (error) {
     console.error("Error procesando pedido en el servidor:", error);
@@ -263,6 +272,12 @@ document.querySelector("#btn-carrito").addEventListener("click", () => abrirCarr
 document.querySelector("#cerrar-carrito").addEventListener("click", () => abrirCarrito(false));
 document.querySelector("#fondo").addEventListener("click", () => abrirCarrito(false));
 document.querySelector("#btn-whatsapp").addEventListener("click", enviarWhatsApp);
+
+// NUEVO: botón de la ventana del QR, cierra la ventana y abre WhatsApp con el mensaje
+document.querySelector("#btn-qr-whatsapp").addEventListener("click", () => {
+  document.querySelector("#modal-qr").hidden = true;
+  abrirWhatsApp(mensajePendiente);
+});
 
 dibujarCarrito();
 cargarProductos();

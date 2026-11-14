@@ -1,6 +1,6 @@
 // ===== ELEMENTOS DE LA PÁGINA =====
 const vistaLogin = document.querySelector("#vista-login");
-const vistaPanel = document.querySelector("#vista-panel");          // NUEVO: reemplaza a vista-ventas y vista-productos
+const vistaPanel = document.querySelector("#vista-panel");
 const btnSalir = document.querySelector("#btn-salir");
 const formLogin = document.querySelector("#form-login");
 const mensajeLogin = document.querySelector("#mensaje-login");
@@ -27,7 +27,7 @@ function formatearFecha(n) {
   return s.length === 8 ? `${s.slice(6, 8)}/${s.slice(4, 6)}/${s.slice(0, 4)}` : s;
 }
 
-// ===== PESTAÑAS ===== (NUEVO)
+// ===== PESTAÑAS =====
 function cambiarPestana(nombre) {
   document.querySelector("#panel-ventas").hidden = nombre !== "ventas";
   document.querySelector("#panel-productos").hidden = nombre !== "productos";
@@ -46,7 +46,7 @@ function mostrar(sesion) {
   vistaLogin.hidden = hayS;
   vistaPanel.hidden = !hayS;
   btnSalir.hidden = !hayS;
-  if (hayS) {            // NUEVO: al entrar se cargan las dos listas
+  if (hayS) {
     cargarVentas();
     cargarProductos();
   }
@@ -149,7 +149,7 @@ async function cargarVentas() {
         return;
       }
       cargarVentas();
-      cargarProductos(); // NUEVO: cancelar devuelve stock, así la pestaña Productos se actualiza
+      cargarProductos();
     })
   );
 }
@@ -167,7 +167,7 @@ async function cargarProductos() {
 
   const { data, error } = await sup
     .from("producto")
-    .select("id_producto, nombre, categoria, precio_costo, precio_venta, existencia")
+    .select("id_producto, nombre, categoria, precio_costo, precio_venta, existencia, descripcion") // NUEVO: se pide la descripción
     .order("id_producto");
 
   if (error) {
@@ -196,6 +196,9 @@ async function cargarProductos() {
           <label>Stock (unidades):
             <input type="number" class="in-stock" min="0" step="1" value="${limpiar(p.existencia)}">
           </label>
+          <label>Descripción:
+            <textarea class="in-desc" rows="3" style="width:100%; padding:8px; margin-top:2px; border:2px solid var(--borde); border-radius:8px; font-family:inherit; font-size:1rem;">${limpiar(p.descripcion)}</textarea>
+          </label>
         </div>
         <button class="btn btn-ancho btn-guardar" data-id="${p.id_producto}">Guardar cambios</button>
       </article>`)
@@ -208,6 +211,7 @@ async function cargarProductos() {
       const venta = tarjeta.querySelector(".in-venta").value.trim();
       const costo = tarjeta.querySelector(".in-costo").value.trim();
       const stock = tarjeta.querySelector(".in-stock").value.trim();
+      const desc = tarjeta.querySelector(".in-desc").value.trim(); // NUEVO: lee la descripción escrita
 
       if (venta === "" || costo === "" || stock === "" ||
           Number(venta) < 0 || Number(costo) < 0 || Number(stock) < 0 ||
@@ -228,6 +232,19 @@ async function cargarProductos() {
       if (error) {
         console.error("Error al guardar el producto:", error);
         alert("No se pudo guardar. Intenta de nuevo.");
+        b.disabled = false;
+        b.textContent = "Guardar cambios";
+        return;
+      }
+
+      // NUEVO: guarda la descripción con la función nueva de Supabase
+      const { error: errDesc } = await sup.rpc("actualizar_descripcion_producto", {
+        p_id_producto: Number(b.dataset.id),
+        p_descripcion: desc,
+      });
+      if (errDesc) {
+        console.error("Error al guardar la descripción:", errDesc);
+        alert("Se guardaron los precios, pero no la descripción. Intenta de nuevo.");
         b.disabled = false;
         b.textContent = "Guardar cambios";
         return;

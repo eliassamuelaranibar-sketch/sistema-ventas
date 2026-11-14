@@ -122,6 +122,17 @@
   </aside>
   <div id="fondo" class="fondo"></div>
 
+  <!-- NUEVO: ventana del QR de pago -->
+  <div id="modal-qr" class="modal-qr" hidden>
+    <div class="modal-caja" role="dialog" aria-modal="true" aria-labelledby="qr-titulo">
+      <h2 id="qr-titulo">¡Pedido registrado!</h2>
+      <p>Total a pagar: <strong id="qr-total"></strong></p>
+      <img src="assets/qr-pago.jpg" alt="QR de pago" class="qr-img">
+      <p class="nota">Escanea el QR con tu billetera móvil para pagar y luego envía tu pedido por WhatsApp.</p>
+      <button id="btn-qr-whatsapp" class="btn btn-ancho">Enviar pedido por WhatsApp</button>
+    </div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/supabase-client.js"></script>
   <script src="js/app.js"></script>
